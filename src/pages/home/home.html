@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      EXA
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="send()">
+    <ion-item> 
+          <ion-label floating>Usuario</ion-label> 
+          <ion-input formControlName="user" type="text"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="user.hasError('required') && isSent" color="danger" padding-left>El usuario es requerido</ion-label> 
+    <ion-label *ngIf="user.hasError('minlength') && isSent" color="danger" padding-left>El usuario debe tener mínimo 6 caracteres</ion-label> 
+    <ion-label *ngIf="user.hasError('pattern') && isSent" color="danger" padding-left>El usuario debe incluir sólo minúsculas</ion-label> 
+    <ion-item> 
+          <ion-label floating>Contraseña</ion-label> 
+          <ion-input formControlName="pass" type="password"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="pass.hasError('required') && isSent" color="danger" padding-left>La contraseña es requerida</ion-label> 
+    <ion-label *ngIf="pass.hasError('minlength') && isSent" color="danger" padding-left>La contraseña debe tener mínimo 8 caracteres</ion-label> 
+    <ion-label *ngIf="pass.hasError('pattern') && isSent" color="danger" padding-left>La contraseña debe incluir sólo números y un símbolo (|@#%&)</ion-label> 
+    <ion-label *ngIf="fail && isSent" color="danger" padding-left>El usuario y/o contraseña son incorrectos</ion-label> 
+    <ion-fab bottom right>
+      <button ion-fab type="submit"><ion-icon name="send"></ion-icon></button>
+    </ion-fab>
+  </form>
+</ion-content>

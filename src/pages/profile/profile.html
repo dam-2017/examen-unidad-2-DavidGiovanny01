@@ -1,0 +1,46 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile {{user}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="send()">
+    <ion-item> 
+          <ion-label floating>Nombre</ion-label> 
+          <ion-input formControlName="nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="nombre.hasError('required') && isSent" color="danger" padding-left>El nombre es requerido</ion-label> 
+    <ion-item> 
+          <ion-label floating>Apellido Materno</ion-label> 
+          <ion-input formControlName="ap_materno" type="text"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="ap_materno.hasError('required') && isSent" color="danger" padding-left>El apellido materno es requerido</ion-label> 
+    <ion-item> 
+          <ion-label floating>Apellido Paterno</ion-label> 
+          <ion-input formControlName="ap_paterno" type="text"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="ap_paterno.hasError('required') && isSent" color="danger" padding-left>El apellido paterno es requerido</ion-label> 
+    <ion-item> 
+          <ion-label floating>Fecha de nacimiento</ion-label> 
+          <ion-datetime formControlName="fecha" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
+    </ion-item>
+    <ion-label *ngIf="fecha.hasError('required') && isSent" color="danger" padding-left>La fecha de nacimiento es requerida</ion-label>    
+    <ion-fab bottom right>
+      <button ion-fab dark type="submit"><ion-icon name="send"></ion-icon></button>
+    </ion-fab>
+  </form>
+  <ion-item> 
+          <ion-label floating>RFC</ion-label> 
+          <ion-input [(ngModel)]="rfc" type="text"></ion-input>
+    </ion-item> 
+</ion-content>
